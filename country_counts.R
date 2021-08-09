@@ -4,4 +4,6 @@ coffee <- read.csv("https://raw.githubusercontent.com/lamccart15/Coffee_Ratings/
 
 country_counts <- coffee %>% count(country_of_origin)
 
+country_counts[32, 1] <- "USA"
+
 write.csv(country_counts, "data/country_coffee_counts.csv", row.names=FALSE)
