@@ -1,7 +1,14 @@
 from flask import Flask, render_template
 import sqlalchemy
+import PyMongo
 
 app = Flask(__name__)
+# Use flask_pymongo to set up mongo connection
+# app.config["MONGO_URI"] = "mongodb+srv://coffee:<password>@unccoffee.2mz8n.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+# mongo = PyMongo(app)
+# ratings_collection = mongo.db.ratings
+# country_collection = mongo.db.country
+# methods_collection = mongo.db.methods
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
