@@ -43,14 +43,14 @@
                     <div class="product-item-title d-flex">
                         <div class="bg-faded p-5 d-flex ms-auto rounded">
                             <h2 class="section-heading mb-0">
-                                <span class="section-heading-upper">Blended to Perfection</span>
-                                <span class="section-heading-lower">Coffees & Teas</span>
+                                <span class="section-heading-upper">Random Forest</span>
+                                <span class="section-heading-lower">Regressor</span>
                             </h2>
                         </div>
                     </div>
-                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="assets/img/products-01.jpg" alt="..." />
-                    <div class="product-item-description d-flex me-auto">
-                        <div class="bg-faded p-5 rounded"><p class="mb-0">We take pride in our work, and it shows. Every time you order a beverage from us, we guarantee that it will be an experience worth having. Whether it's our world famous Venezuelan Cappuccino, a refreshing iced herbal tea, or something as simple as a cup of speciality sourced black coffee, you will be coming back for more.</p></div>
+                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="assets/img/imp_feat_doughnut.png" alt="Donut chart showing important features as determined by a random forest regressor" />
+                    <div class="product-item-title d-flex">
+                        <div class="bg-faded p-5 rounded"><p class="mb-0">The first part of our analysis focuses on <strong>regression</strong>. To start, we used the RandomForest Regressor function from the sklearn package in Python to discover which features were most important when determining <strong>Cupper Points</strong>, which is the subjective score given personally by the cup taster on a scale of 1-10. Each of these features is shown in the above donut plot with their relative importance as determined by this algorithm.</p></div>
                     </div>
                 </div>
             </div>
@@ -61,14 +61,17 @@
                     <div class="product-item-title d-flex">
                         <div class="bg-faded p-5 d-flex me-auto rounded">
                             <h2 class="section-heading mb-0">
-                                <span class="section-heading-upper">Delicious Treats, Good Eats</span>
-                                <span class="section-heading-lower">Bakery & Kitchen</span>
+                                <span class="section-heading-upper">Linear</span>
+                                <span class="section-heading-lower">Regression</span>
                             </h2>
                         </div>
                     </div>
-                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="assets/img/products-02.jpg" alt="..." />
+                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="assets/img/full_model_coeff.png" alt="Table of variables and coefficients for a full model" />
                     <div class="product-item-description d-flex ms-auto">
-                        <div class="bg-faded p-5 rounded"><p class="mb-0">Our seasonal menu features delicious snacks, baked goods, and even full meals perfect for breakfast or lunchtime. We source our ingredients from local, oragnic farms whenever possible, alongside premium vendors for specialty goods.</p></div>
+                        <div class="bg-faded p-5 rounded"><p class="mb-0">Initially, we made a full model with all of these variables. The score for the training data was ~72.35% and the score for the testing data was ~76.77%. These scores are both pretty high, indicating that our model is a good fit for the data. Another measure of fit is the R-squared value which in this case is 0.7235, which means that 72.35% of the variation in the data is explained by our model.</p></div>
+                    </div>
+                    <div class="product-item-description d-flex ms-auto">
+                        <div class="bg-faded p-5 rounded"><p class="mb-0">Intuitively, you'd think the higher the score in the ratings variables would lead to a higher cupper score and more defects would lead to a lower score. This isn't the case for all of these variables. For example, the variables <strong>moisture</strong>, <strong>uniformity</strong>, and <strong>sweetness</strong> all show a <em>slight</em> <strong>negative correlation</strong> with cupper points. On the other hand, <strong>category_one_defects</strong> is showing a <em>strong</em> <strong>positive correlation</strong> with cupper points. Neither of these conclusions makes a lot of intuitive sense, so we decided to look at a reduced model.</p></div>
                     </div>
                 </div>
             </div>
@@ -79,14 +82,14 @@
                     <div class="product-item-title d-flex">
                         <div class="bg-faded p-5 d-flex ms-auto rounded">
                             <h2 class="section-heading mb-0">
-                                <span class="section-heading-upper">From Around the World</span>
-                                <span class="section-heading-lower">Bulk Speciality Blends</span>
+                                <span class="section-heading-upper">Reduced</span>
+                                <span class="section-heading-lower">Model</span>
                             </h2>
                         </div>
                     </div>
-                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="assets/img/products-03.jpg" alt="..." />
+                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="assets/img/reduced_model_coeff.png" alt="..." />
                     <div class="product-item-description d-flex me-auto">
-                        <div class="bg-faded p-5 rounded"><p class="mb-0">Travelling the world for the very best quality coffee is something take pride in. When you visit us, you'll always find new blends from around the world, mainly from regions in Central and South America. We sell our blends in smaller to large bulk quantities. Please visit us in person for more details.</p></div>
+                        <div class="bg-faded p-5 rounded"><p class="mb-0">This is a reduced model.</p></div>
                     </div>
                 </div>
             </div>
