@@ -1,18 +1,20 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import sqlalchemy
-import PyMongo
+from flask_pymongo import PyMongo
 
 app = Flask(__name__)
 # Use flask_pymongo to set up mongo connection
-# app.config["MONGO_URI"] = "mongodb+srv://coffee:<password>@unccoffee.2mz8n.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-# mongo = PyMongo(app)
-# ratings_collection = mongo.db.ratings
-# country_collection = mongo.db.country
-# methods_collection = mongo.db.methods
+app.config["MONGO_URI"] = "mongodb+srv://coffee:uncgroupproject@unccoffee.2mz8n.mongodb.net/coffee?retryWrites=true&w=majority"
+mongo = PyMongo(app)
+ratings_collection = mongo.db.ratings
+country_collection = mongo.db.country
+methods_collection = mongo.db.methods
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
 @app.route('/')
 @app.route('/home')
 def home():
@@ -21,6 +23,8 @@ def home():
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
 @app.route('/about')
 def about():
     return render_template('about.html')
@@ -28,13 +32,17 @@ def about():
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
 @app.route('/data')
 def data():
     return render_template('data.html')
-   
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
 @app.route('/methods')
 def methods():
     return render_template('methods.html')
@@ -42,6 +50,22 @@ def methods():
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+@app.route('/api/ratings')
+def coffee_ratings():
+    ratingslist = []
+    ratings_docs = ratings_collection.find()
+    for document in ratings_docs:
+        print(document)
+        ratingslist.append(dict(document))
+    return jsonify(ratingslist)
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html'), 404
