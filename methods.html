@@ -66,12 +66,12 @@
                             </h2>
                         </div>
                     </div>
-                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="assets/img/full_model_coeff.png" alt="Table of variables and coefficients for a full model" />
-                    <div class="product-item-description d-flex ms-auto">
-                        <div class="bg-faded p-5 rounded"><p class="mb-0">Initially, we made a full model with all of these variables. The score for the training data was ~72.35% and the score for the testing data was ~76.77%. These scores are both pretty high, indicating that our model is a good fit for the data. Another measure of fit is the R-squared value which in this case is 0.7235, which means that 72.35% of the variation in the data is explained by our model.</p></div>
+                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="assets/img/full_model_coeff.png" alt="Table of variables and coefficients paired with a residuals plot for the full model" />
+                    <div class="product-item-title d-flex">
+                        <div class="bg-faded p-5 rounded"><p class="mb-0">Initially, we made a full model with all of these variables. The score for the training data was ~72.35% and the score for the testing data was ~76.77%. These scores are both pretty high, indicating that our model is a good fit for the data. Another measure of fit is the R-squared value which in this case is 0.7235, which means that 72.35% of the variation in the data is explained by our model. Finally, looking at the residuals plot, we can see that most of the residuals are clustered around 0 and majority fall within -1 and 1 showing that our model is fairly accurate at predicting cupper points.</p></div>
                     </div>
-                    <div class="product-item-description d-flex ms-auto">
-                        <div class="bg-faded p-5 rounded"><p class="mb-0">Intuitively, you'd think the higher the score in the ratings variables would lead to a higher cupper score and more defects would lead to a lower score. This isn't the case for all of these variables. For example, the variables <strong>moisture</strong>, <strong>uniformity</strong>, and <strong>sweetness</strong> all show a <em>slight</em> <strong>negative correlation</strong> with cupper points. On the other hand, <strong>category_one_defects</strong> is showing a <em>strong</em> <strong>positive correlation</strong> with cupper points. Neither of these conclusions makes a lot of intuitive sense, so we decided to look at a reduced model.</p></div>
+                    <div class="product-item-title d-flex">
+                        <div class="bg-faded p-5 rounded"><p class="mb-0">Intuitively, you'd think a higher score in the ratings variables would lead to a higher cupper score and more defects would lead to a lower score, but as determined by the coeffecients, this doesn't seem to be the case for all of the variables in the model. For example, the variables <strong>moisture</strong>, <strong>uniformity</strong>, and <strong>sweetness</strong> all show a <em>slight</em> <strong>negative correlation</strong> with cupper points. On the other hand, <strong>category_one_defects</strong> is showing a <em>strong</em> <strong>positive correlation</strong> with cupper points. Neither of these conclusions makes a lot of intuitive sense, so we decided to look at a reduced model.</p></div>
                     </div>
                 </div>
             </div>
@@ -87,9 +87,12 @@
                             </h2>
                         </div>
                     </div>
-                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="assets/img/reduced_model_coeff.png" alt="..." />
-                    <div class="product-item-description d-flex me-auto">
-                        <div class="bg-faded p-5 rounded"><p class="mb-0">This is a reduced model.</p></div>
+                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="assets/img/reduced_model_coeff.png" alt="Table of variables and coefficients paired with a residuals plot for the reduced model" />
+                    <div class="product-item-title d-flex">
+                        <div class="bg-faded p-5 rounded"><p class="mb-0">We utilized the results of the Random Forest Regressor by selecting the 3 most important features to be the predictors in our reduced model: <strong>flavor</strong>, <strong>balance</strong>, and <strong>aftertaste</strong>. Each of these variables shows a <strong>positive correlation</strong> with Cupper Points: approximately 1.30, 0.690, and 0.682, respectively. This makes a bit more sense intuitively than the full model, because a higher rating in each of these categories translates to a higher rating given by the taste tester.</p></div>
+                    </div>
+                    <div class="product-item-title d-flex">
+                        <div class="bg-faded p-5 rounded"><p class="mb-0">Regarding model fit, the reduced model appears to be slightly weaker overall than the full model. The score for the training data was lower at ~70.51% but the score for the testing data was slightly higher at 77.05%. The higher testing score may mean that our model is doing a better job of predicting based on the test data, but the larger difference between the two scores could indicate possible over-fitting. The R-squared score was lower at 0.7051, meaning that this model explains nearly 2% less of the variation in the data than the full model. Lastly, the residuals shown above are still clustered around 0 with the majority falling between -1 and 1, but you can see it's not <em>quite</em> as strongly clustered around 0 as the full model is. All things considered, the reduced model is still rather effective at prediction and given its simplicity and the fact that the coefficients make more sense, we would choose to use the reduced model to predict Cupper Points over the full model.</p></div>
                     </div>
                 </div>
             </div>
