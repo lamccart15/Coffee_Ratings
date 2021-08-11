@@ -66,6 +66,36 @@ def coffee_ratings():
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+@app.route('/api/methods')
+def coffee_methods():
+    methodslist = []
+    methods_docs = methods_collection.find()
+    for document in methods_docs:
+        print(document)
+        del document["_id"]
+        methodslist.append(dict(document))
+    return jsonify(methodslist)
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+@app.route('/api/country')
+def coffee_country():
+    countrylist = []
+    country_docs = country_collection.find()
+    for document in country_docs:
+        print(document)
+        del document["_id"]
+        countrylist.append(dict(document))
+    return jsonify(countrylist)
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 
 @app.errorhandler(404)
 def page_not_found(error):
