@@ -58,6 +58,7 @@ def coffee_ratings():
     ratings_docs = ratings_collection.find()
     for document in ratings_docs:
         print(document)
+        del document["_id"]
         ratingslist.append(dict(document))
     return jsonify(ratingslist)
 
