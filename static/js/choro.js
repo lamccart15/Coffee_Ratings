@@ -25,7 +25,7 @@ let svg = d3.select("#choro-wrapper")
     .attr("height", height);
 
 // load in data
-d3.csv("https://raw.githubusercontent.com/lamccart15/Coffee_Ratings/main/data/country_coffee_counts.csv", function (data) {
+d3.csv("https://raw.githubusercontent.com/lamccart15/Coffee_Ratings/main/static/data/country_coffee_counts.csv", function (data) {
     let dataArray = [];
     dataArray.push(parseFloat(data.n))
 
