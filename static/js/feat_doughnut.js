@@ -10,4 +10,4 @@ var data = [{
 
 var layout = {title: "Features With the Most Importance"};
 
-Plotly.newPlot("myPlot", data, layout);
+Plotly.newPlot("doughnut-chart", data, layout);
