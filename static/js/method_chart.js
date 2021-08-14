@@ -2,7 +2,7 @@
 
 
 function init(){
-    d3.csv('/api/methods').then(data => {
+    d3.json('/api/methods').then(data => {
     console.log(data)
         var method = data.map(d => d.processing_method)
         console.log(method)
