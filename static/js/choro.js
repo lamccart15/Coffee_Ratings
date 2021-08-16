@@ -61,7 +61,7 @@ d3.csv("https://raw.githubusercontent.com/lamccart15/Coffee_Ratings/main/static/
         //create tooltip
         let toolTip = d3.select("#choro-wrapper").append("div")
             .attr("class", "tooltip")
-            .style("opacity", 1)
+            .style("opacity", 0)
             .style("background-color", "#603824")
             .style("color", "#fff")
             .style("border", "solid")
